@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/nike4613/ModSaber-MetadataFileSchema/master/Schema.json",
   "id": "AutoPauseStealth",
   "name": "AutoPauseStealth",
-  "author": "Aryetis",
+  "author": "L4yLa_Coop",
   "version": "0.2.0",
   "description": "Automatically and stealthly pause your game at the start of every song waiting for potential lag spikes to end.",
   "gameVersion": "1.44.1",
@@ -11,6 +11,6 @@
     "BSIPA": "^4.3.7"
   },
   "links": {
-    "project-home": "https://github.com/Aryetis/AutoPauseStealth"
+    "project-home": "https://github.com/L4yLa/AutoPauseStealth"
   }
 }
