@@ -60,6 +60,12 @@ namespace AutoPauseStealth
                     }
                 }
 
+                if (PluginSettings.Instance.GetEffectiveFpsThresold() <= 0)
+                {
+                    Logger.log?.Info("Min FPS is not set and the headset refresh rate is unknown => AutoPauseStealth will NOT pause the game");
+                    return;
+                }
+
                 StabilityPeriodActive = true;
                 b_inGame = true;
                 f_stabilityTimer = 0.0f;
@@ -125,7 +131,7 @@ namespace AutoPauseStealth
             {
                 f_fps = 1.0f / Time.deltaTime;
 
-                if (f_fps > PluginSettings.Instance.FpsThresold)
+                if (f_fps > PluginSettings.Instance.GetEffectiveFpsThresold())
                 {
                     f_stabilityTimer += Time.deltaTime;
                     if (f_stabilityTimer >= PluginSettings.Instance.StabilityDurationCheck)

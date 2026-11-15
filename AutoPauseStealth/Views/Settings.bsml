@@ -1,20 +1,23 @@
 ﻿<settings-container>
 	<horizontal horizontal-fit="PreferredSize">
-    <text text='~RecommendedFpsThresold' align='Center'></text>
+		<text id='fps-stats' text='[FPS] -- / Avg. -- / Min. -- (Headset: unknown)' align='Center'></text>
 	</horizontal>
 	<horizontal horizontal-fit="PreferredSize">
-		<slider-setting apply-on-change="true" value="fpsThresold" text="Desired Minimal FPS"
+		<dropdown-list-setting id='target-dropdown' apply-on-change="true" value="targetFps" options="targetOptions" text="Target FPS"
+						hover-hint="Frame rate the game should reach before starting the song"></dropdown-list-setting>
+	</horizontal>
+	<horizontal id='threshold-row' horizontal-fit="PreferredSize">
+		<dropdown-list-setting id='threshold-dropdown' apply-on-change="true" value="threshold" options="thresholdOptions" text="Threshold"
+						hover-hint="Every frame must stay above this ratio of [Target FPS]"></dropdown-list-setting>
+	</horizontal>
+	<horizontal id='manual-row' horizontal-fit="PreferredSize">
+		<slider-setting id='manual-fps' apply-on-change="true" value="manualFps" text="Min FPS" integer-only="true" show-buttons="true"
 						hover-hint="FPS value to reach before starting the song"
-						min="55" max="150" increment="5"></slider-setting>
-	</horizontal>
-	<horizontal horizontal-fit="PreferredSize">
-		<checkbox-setting apply-on-change="true" value="DetectFpsThresoldOnStartup" text="AutoDetect Minimal FPS on startup"
-							hover-hint="Automatically detect 'Desired Minimal FPS' on startup"
-						></checkbox-setting>
+						min="55" max="150" increment="1"></slider-setting>
 	</horizontal>
 	<horizontal horizontal-fit="PreferredSize">
 		<slider-setting apply-on-change="true" value="stabilityDurationCheck" text="FPS Stability Check Duration"
-						hover-hint="How long does the fps have to be above [Desired Minimal FPS] for the game to start"
+						hover-hint="How long does the fps have to stay above the minimum FPS for the game to start"
 						min="0.2" max="1" increment="0.1"></slider-setting>
 	</horizontal>
 	<horizontal horizontal-fit="PreferredSize">

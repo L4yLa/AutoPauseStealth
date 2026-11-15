@@ -19,6 +19,7 @@ namespace AutoPauseStealth
         internal static Plugin instance { get; private set; }
         internal static string Name => "AutoPauseStealth";
         internal static AutoPauseStealthController PluginController { get { return AutoPauseStealthController.instance; } }
+        private static readonly Views.SettingsView SettingsView = new Views.SettingsView();
 
         [Init]
         public Plugin(IPALogger logger, Config conf) 
@@ -41,15 +42,16 @@ namespace AutoPauseStealth
 
         public void OnMainMenuInit()
         {
-            BSMLSettings.Instance.AddSettingsMenu("AutoPauseStealth", "AutoPauseStealth.Views.settings.bsml", PluginSettings.Instance);
+            BSMLSettings.Instance.AddSettingsMenu("AutoPauseStealth", "AutoPauseStealth.Views.settings.bsml", SettingsView);
         }
 
         [OnDisable]
         public void OnDisable()
         {
-            BSMLSettings.Instance.RemoveSettingsMenu(PluginSettings.Instance);
+            BeatSaberMarkupLanguage.Util.MainMenuAwaiter.MainMenuInitializing -= OnMainMenuInit;
+            BSMLSettings.Instance.RemoveSettingsMenu(SettingsView);
             if (PluginController != null)
-                GameObject.Destroy(PluginController);
+                GameObject.Destroy(PluginController.gameObject);
             RemoveHarmonyPatches();
         }
         #endregion

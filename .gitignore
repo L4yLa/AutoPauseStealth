@@ -332,3 +332,10 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 /CameraPlus/packages.config
+# ---- AutoPauseStealth (L4yLa fork) ----
+# Game reference assemblies (csproj default BeatSaberDir = AutoPauseStealth\Refs). Never commit game DLLs.
+Refs/
+# Release archives created by the SevenZipRelease target / build.bat
+/release/
+# Build log written by build.bat
+/build.log
